@@ -1,16 +1,16 @@
 const canvas = document.querySelector('#sprites');
 const ctx = canvas.getContext('2d');
-canvas.width = 800;
-canvas.height = 800;
+canvas.width = 600;
+canvas.height = 600;
 
-let score = 0;
+let score = 1;
 let segments = [];
 let currentFrame = 0;
 let lastKey;
 let gameOver = false;
 
 const spriteSize = 8;
-const cellSize = 40;
+const cellSize = 60;
 const refreshRate = 200;
 
 const bgCanvas = document.createElement('canvas');
@@ -246,16 +246,20 @@ function animate() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     //Score
-    ctx.font = "40px Arial";
-    ctx.fillStyle = 'black';
-    ctx.fillText(score, canvas.width-50, 50);
+    // ctx.font = "600 40px Arial";
+    // ctx.fillStyle = 'black';
+    // ctx.textAlign = 'center';
+    // ctx.fillText(score, canvas.width-40, canvas.height-30);
 
     window.requestAnimationFrame(animate);
 
     if(gameOver) {
-      ctx.font = "100px Arial";
+      ctx.font = "800 100px Arial";
       ctx.fillStyle = 'black';
-      ctx.fillText('DEAD', canvas.width/2-100, canvas.height/2);
+      ctx.textAlign = 'center';
+      ctx.fillText('DEAD :(', canvas.width/2, canvas.height/2);
+      ctx.font = "600 50px Arial";
+      ctx.fillText('Score: ' + score, canvas.width/2, canvas.height/2+100);
     }
     else {
       //Keys Pressed
@@ -304,7 +308,7 @@ function animate() {
 
       // Segment movement
       segments.forEach((segment, index) => {
-        if(index > 1 && player.position.x == segment.position.x && player.position.y == segment.position.y) {
+        if(index > 1 && index < segments.length-1 && player.position.x == segment.position.x && player.position.y == segment.position.y) {
           gameOver = true;
         }
         
