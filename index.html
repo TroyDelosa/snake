@@ -1,12 +1,53 @@
 <div id="snake">
   <canvas id="sprites"></canvas>
+  <div class="btnGroup">
+    <button id="btnUp">W</button>
+    <div class="innerBtnGroup">
+      <button id="btnLeft">A</button>
+      <button id="btnRight">D</button>
+    </div>
+    <button id="btnDown">S</button>
+  </div>
 </div>
 
 <style>
   #snake {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
   }
+
+  .btnGroup {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 30vw;
+    align-items: center;
+    margin-top: 5%;
+  }
+
+  .btnGroup button,
+  .btnGroup .innerBtnGroup {
+    height: 33%;
+  }
+
+  .innerBtnGroup {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .innerBtnGroup button {
+    height: 100%;
+  }
+
+  button {
+    width: 33%;
+    font-size: 2em;
+  }
+  
 </style>
 
 <script src="index.js"></script>

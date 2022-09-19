@@ -13,6 +13,11 @@ const spriteSize = 8;
 const cellSize = 60;
 const refreshRate = 200;
 
+const btnUp = document.querySelector('#btnUp');
+const btnDown = document.querySelector('#btnDown');
+const btnLeft = document.querySelector('#btnLeft');
+const btnRight = document.querySelector('#btnRight');
+
 const bgCanvas = document.createElement('canvas');
 const bgCtx = bgCanvas.getContext('2d');
 bgCanvas.width = cellSize;
@@ -80,28 +85,6 @@ class Segment extends Sprite {
     this.lastPosition = lastPosition;
     this.scale = scale;
   }
-
-  // rotateImage(degrees) {
-  //   rotation = degrees*Math.PI/180;
-  //   ctx.setTransform(scale, 0, 0, scale, x+w/2, y+h/2);
-  //   ctx.rotate(rotation);
-    
-  //   ctx.fillRect(-w/2, -h/2, w, h);
-
-  //   ctx.drawImage()
-  //   ctx.drawImage(
-  //     sprites,
-  //     0+(spriteSize*currentFrame),
-  //     this.spritePosition,
-  //     -spriteSize/2,
-  //     -spriteSize/2,
-  //     this.position.x, 
-  //     this.position.y, 
-  //     cellSize, 
-  //     cellSize
-  //   )
-  //   //ctx.drawImage(image, -image.width / 2, -image.height / 2);
-  // }
 
   draw() {
     ctx.imageSmoothingEnabled = false;
@@ -348,4 +331,22 @@ window.addEventListener('keydown', (event) => {
       lastKey = 'w';
     break;
   }
+})
+
+window.addEventListener('click', (event) => {
+  switch (event.target) {
+    case btnUp:
+      lastKey = 'w';
+    break;
+    case btnDown:
+      lastKey = 's';
+    break;
+    case btnLeft:
+      lastKey = 'a';
+    break;
+    case btnRight:
+      lastKey = 'd';
+    break;
+  }
+  // console.log(event.target);
 })
